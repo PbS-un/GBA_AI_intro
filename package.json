@@ -2,6 +2,7 @@
   "name": "silvercare-voice-landing",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://PbS-un.github.io/GBA_AI_intro",
   "type": "module",
   "engines": {
     "node": ">=20.0.0"
@@ -9,6 +10,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "lint": "eslint src"
   },
@@ -26,6 +29,7 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.39.0",
+    "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.0",
