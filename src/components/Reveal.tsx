@@ -5,7 +5,7 @@ type RevealProps = PropsWithChildren<{
   id?: string;
   className?: string;
   delay?: number;
-  as?: "div" | "article";
+  as?: "div" | "article" | "li";
 }>;
 
 /** 統一控制進場節奏，並尊重使用者的減少動態效果設定。 */

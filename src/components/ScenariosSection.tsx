@@ -13,11 +13,16 @@ export default function ScenariosSection() {
   const ActiveIcon = iconMap[active.icon];
 
   const handleTabKey = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
-    if (!(["ArrowLeft", "ArrowRight"] as string[]).includes(event.key)) return;
+    const supportedKeys = ["ArrowUp", "ArrowDown", "Home", "End"];
+    if (!supportedKeys.includes(event.key)) return;
     event.preventDefault();
-    const next = event.key === "ArrowRight"
-      ? (index + 1) % scenarios.length
-      : (index - 1 + scenarios.length) % scenarios.length;
+    const next = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? scenarios.length - 1
+        : event.key === "ArrowDown"
+          ? (index + 1) % scenarios.length
+          : (index - 1 + scenarios.length) % scenarios.length;
     setActiveIndex(next);
     document.getElementById(`scenario-tab-${next}`)?.focus();
   };
@@ -34,7 +39,7 @@ export default function ScenariosSection() {
               light
             />
 
-            <div className="mt-10 flex flex-col gap-3" role="tablist" aria-label="功能情境">
+            <div className="mt-10 flex flex-col gap-3" role="tablist" aria-label="功能情境" aria-orientation="vertical">
               {scenarios.map((scenario, index) => {
                 const Icon = iconMap[scenario.icon];
                 const selected = index === activeIndex;
@@ -53,7 +58,7 @@ export default function ScenariosSection() {
                   >
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/8"><Icon size={20} aria-hidden="true" /></span>
                     <span className="text-left">
-                      <small className="block text-[10px] font-bold uppercase tracking-[0.15em] opacity-50">情境 0{index + 1}</small>
+                      <small className="scenario-tab-kicker block text-[10px] font-bold uppercase tracking-[0.15em]">情境 0{index + 1}</small>
                       <strong className="mt-0.5 block">{scenario.label}</strong>
                     </span>
                     <MoveRight className="ml-auto" size={19} aria-hidden="true" />

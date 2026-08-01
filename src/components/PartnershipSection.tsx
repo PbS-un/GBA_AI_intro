@@ -42,7 +42,7 @@ export default function PartnershipSection({ onContact }: PartnershipSectionProp
                   <span className="font-bold">{label}</span>
                 </div>
               ))}
-              <p className="col-span-2 mt-2 text-center text-xs font-semibold tracking-[0.08em] text-white/40">期待共創 · 未表示任何現有正式合作關係</p>
+              <p className="col-span-2 mt-2 text-center text-xs font-semibold tracking-[0.08em] text-white/65">期待共創 · 未表示任何現有正式合作關係</p>
             </div>
           </div>
         </Reveal>

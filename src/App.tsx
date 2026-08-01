@@ -10,6 +10,8 @@ import RoadmapSection from "./components/RoadmapSection";
 import SafetySection from "./components/SafetySection";
 import ScenariosSection from "./components/ScenariosSection";
 import SocialImpactSection from "./components/SocialImpactSection";
+import TargetUsersSection from "./components/TargetUsersSection";
+import TeamSection from "./components/TeamSection";
 import WorkflowSection from "./components/WorkflowSection";
 
 export default function App() {
@@ -34,9 +36,11 @@ export default function App() {
         <ProblemSection />
         <FeaturesSection />
         <WorkflowSection />
+        <TargetUsersSection />
         <ScenariosSection />
         <SafetySection />
         <SocialImpactSection />
+        <TeamSection />
         <RoadmapSection />
         <PartnershipSection onContact={openContact} />
       </main>

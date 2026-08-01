@@ -22,15 +22,13 @@ export default function WorkflowSection() {
             {workflow.map((step, index) => {
               const Icon = stepIcons[index];
               return (
-                <Reveal as="article" key={step.number} delay={index * 0.055} className="relative">
-                  <li className="workflow-card group h-full rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-[0_12px_36px_-28px_rgba(12,55,76,0.35)]">
-                    <span className="workflow-icon relative mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-200 bg-white text-teal-800 shadow-sm">
-                      <Icon size={25} aria-hidden="true" />
-                      <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#0b334d] text-[9px] font-black text-white">{step.number}</span>
-                    </span>
-                    <h3 className="mt-6 font-extrabold text-[#123b52]">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-500">{step.description}</p>
-                  </li>
+                <Reveal as="li" key={step.number} delay={index * 0.055} className="workflow-card group relative h-full rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-[0_12px_36px_-28px_rgba(12,55,76,0.35)]">
+                  <span className="workflow-icon relative mx-auto flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-200 bg-white text-teal-800 shadow-sm">
+                    <Icon size={25} aria-hidden="true" />
+                    <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#0b334d] text-[9px] font-black text-white">{step.number}</span>
+                  </span>
+                  <h3 className="mt-6 font-extrabold text-[#123b52]">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-500">{step.description}</p>
                 </Reveal>
               );
             })}
@@ -41,7 +39,7 @@ export default function WorkflowSection() {
           <p className="text-center text-xs font-extrabold uppercase tracking-[0.17em] text-teal-700">完整服務鏈路</p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm font-bold text-slate-700 sm:gap-3 sm:text-base">
             {workflow.map((step, index) => (
-              <span key={step.number} className="contents">
+              <span key={step.number} className="inline-flex items-center gap-2 sm:gap-3">
                 <span className="rounded-full bg-white px-3.5 py-2 shadow-sm">{step.title}</span>
                 {index < workflow.length - 1 && <ArrowRight size={17} className="text-teal-600" aria-hidden="true" />}
               </span>

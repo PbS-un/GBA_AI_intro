@@ -41,7 +41,7 @@ export default function SocialImpactSection() {
         </div>
 
         <Reveal className="relative mt-12 overflow-hidden rounded-[1.75rem] bg-[#f4eee6] px-7 py-9 sm:px-11 sm:py-11" delay={0.12}>
-          <Quote className="absolute right-8 top-6 text-orange-300/60" size={54} aria-hidden="true" />
+          <Quote className="absolute right-8 top-6 hidden text-orange-300/60 sm:block" size={54} aria-hidden="true" />
           <p className="relative max-w-5xl text-xl font-bold leading-9 tracking-[-0.015em] text-[#183b4f] sm:text-2xl sm:leading-10">
             長者不應因為不懂打字、不熟悉 APP 或看不清複雜介面，而失去獲得公共服務與健康支援的機會。
           </p>

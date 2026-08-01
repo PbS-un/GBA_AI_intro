@@ -1,7 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, Check, HeartPulse, MapPin, Mic, ShieldCheck, Sparkles } from "lucide-react";
+import { projectMeta } from "../data/content";
 
-const trustTags = ["澳門本地服務", "官方公開資料", "語音優先設計", "AI 不取代醫生"];
+const trustTags = ["聚焦澳門長者", "基於官方公開資料", "語音優先設計", "AI 不取代醫生"];
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -21,18 +22,23 @@ export default function Hero() {
         <div className="min-w-0 max-w-3xl">
           <motion.div {...enter(0.05)} className="inline-flex items-center gap-2 rounded-full border border-teal-700/15 bg-white/70 px-4 py-2 text-xs font-extrabold tracking-[0.1em] text-teal-800 shadow-sm backdrop-blur">
             <Sparkles size={15} aria-hidden="true" />
-            澳門 AI 語音助老守護系統
+            {projectMeta.projectType} · 澳門 AI 語音助老守護系統
           </motion.div>
           <motion.p {...enter(0.12)} className="mt-7 text-xs font-bold uppercase tracking-[0.24em] text-slate-500">
-            SilverCare Voice · Macau
+            Team · 源神帶飛隊
           </motion.p>
           <motion.h1 {...enter(0.18)} className="mt-4 max-w-[720px] text-[clamp(2.75rem,6.4vw,5.4rem)] font-black leading-[1.02] tracking-[-0.055em] text-[#0a3048]">
-            <span className="block">一句話，連接</span>
-            <span className="block">長者需要的</span>
-            <span className="hero-title-accent block w-fit">每一份守護</span>
+            {projectMeta.teamName}
           </motion.h1>
-          <motion.p {...enter(0.28)} className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">
-            銀髮一句通讓長者無需學習複雜 APP，只需透過語音說出需要，就能獲得福利查詢、醫療分流、輪候資訊與緊急求助支援。
+          <motion.div {...enter(0.23)} className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <p className="hero-title-accent w-fit text-[clamp(1.9rem,4vw,3.25rem)] font-black leading-tight tracking-[-0.04em]">{projectMeta.projectName}</p>
+            <p className="text-sm font-bold tracking-[0.08em] text-slate-500">SILVERCARE VOICE</p>
+          </motion.div>
+          <motion.p {...enter(0.28)} className="mt-6 max-w-2xl text-lg font-semibold leading-8 text-slate-700 sm:text-xl sm:leading-9">
+            {projectMeta.positioning}
+          </motion.p>
+          <motion.p {...enter(0.31)} className="mt-4 max-w-2xl text-base leading-7 text-slate-500">
+            讓澳門長者只需說一句話，就能更容易找到公共服務、醫療資訊與下一步求助方向。
           </motion.p>
           <motion.div {...enter(0.36)} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a href="#features" className="button button-primary group">
@@ -74,24 +80,24 @@ export default function Hero() {
                 </span>
                 <div>
                   <p className="text-sm font-black text-[#0b334d]">銀髮一句通</p>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-slate-400">守護服務連線中</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.13em] text-slate-400">概念原型 · Demo</p>
                 </div>
               </div>
               <span className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> 安全連線
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> 語音介面示意
               </span>
             </div>
 
             <div className="mockup-grid rounded-b-[1.5rem] px-4 pb-5 pt-7 sm:px-7 sm:pb-7">
               <div className="flex flex-col items-center">
                 <p className="text-center text-sm font-bold text-slate-500">請說出你需要的幫助</p>
-                <button type="button" className="voice-button mt-5" aria-label="示範語音輸入按鈕">
+                <div className="voice-button mt-5" aria-hidden="true">
                   <span className="voice-ring voice-ring-one" aria-hidden="true" />
                   <span className="voice-ring voice-ring-two" aria-hidden="true" />
                   <span className="voice-button-core">
                     <Mic size={30} strokeWidth={2.2} aria-hidden="true" />
                   </span>
-                </button>
+                </div>
                 <div className="mt-5 flex h-8 items-center gap-[3px]" aria-label="模擬語音波形">
                   {Array.from({ length: 21 }).map((_, index) => (
                     <span
@@ -104,7 +110,7 @@ export default function Hero() {
                     />
                   ))}
                 </div>
-                <p className="mt-1 text-xs font-medium text-teal-700">正在聆聽 · 粵語</p>
+                <p className="mt-1 text-xs font-medium text-teal-700">語音輸入示意 · 粵語</p>
               </div>
 
               <div className="mt-7 space-y-3">
@@ -143,9 +149,9 @@ export default function Hero() {
         <div className="rounded-2xl border border-slate-200/80 bg-white/70 px-5 py-5 backdrop-blur sm:flex sm:items-center sm:justify-between sm:px-7">
           <p className="max-w-2xl text-sm font-semibold leading-6 text-slate-600 sm:text-base">
             <span className="mr-2 text-teal-700">我們是誰</span>
-            專注澳門智慧養老、AI 語音服務與長者健康守護的跨領域創新團隊。
+            {projectMeta.teamName}是一支專注澳門智慧養老、AI 語音服務與長者健康守護的跨領域創新團隊。
           </p>
-          <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-400 sm:mt-0">Public service × Care × AI</p>
+          <p className="mt-3 max-w-md text-xs font-bold tracking-[0.08em] text-slate-400 sm:mt-0 sm:text-right">{projectMeta.fullProjectName}</p>
         </div>
       </motion.div>
     </section>

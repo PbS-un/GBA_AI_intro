@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 type NavbarProps = {
@@ -8,9 +8,9 @@ type NavbarProps = {
 const navLinks = [
   { label: "項目理念", href: "#mission" },
   { label: "核心功能", href: "#features" },
-  { label: "運作方式", href: "#workflow" },
-  { label: "社會價值", href: "#impact" },
-  { label: "發展藍圖", href: "#roadmap" },
+  { label: "服務群體", href: "#users" },
+  { label: "團隊介紹", href: "#team" },
+  { label: "參賽目標", href: "#goals" },
 ];
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
@@ -26,6 +26,7 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
 export default function Navbar({ onContact }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const updateNav = () => setIsScrolled(window.scrollY > 20);
@@ -33,6 +34,17 @@ export default function Navbar({ onContact }: NavbarProps) {
     window.addEventListener("scroll", updateNav, { passive: true });
     return () => window.removeEventListener("scroll", updateNav);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
 
   useEffect(() => {
     const closeOnResize = () => {
@@ -65,6 +77,7 @@ export default function Navbar({ onContact }: NavbarProps) {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="icon-button menu-button lg:hidden"
           aria-label={menuOpen ? "關閉導覽選單" : "開啟導覽選單"}
@@ -83,13 +96,14 @@ export default function Navbar({ onContact }: NavbarProps) {
       >
         <div className="section-shell flex flex-col gap-1 pb-6 pt-2">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+            <a key={link.href} href={link.href} className="mobile-nav-link" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)}>
               {link.label}
             </a>
           ))}
           <button
             type="button"
             className="button button-primary mt-3 w-full"
+            tabIndex={menuOpen ? 0 : -1}
             onClick={() => {
               setMenuOpen(false);
               onContact();

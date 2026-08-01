@@ -215,18 +215,23 @@ textarea:focus-visible,
 }
 
 .mobile-nav {
+  visibility: hidden;
   max-height: 0;
   overflow: hidden;
   background: rgb(250 252 251 / 96%);
   opacity: 0;
   backdrop-filter: blur(18px);
-  transition: max-height 280ms ease, opacity 220ms ease;
+  pointer-events: none;
+  transition: max-height 280ms ease, opacity 220ms ease, visibility 0s linear 280ms;
 }
 
 .mobile-nav-open {
+  visibility: visible;
   max-height: 32rem;
   border-bottom: 1px solid #e2e8ea;
   opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 
 .mobile-nav-link {
@@ -579,6 +584,10 @@ textarea:focus-visible,
   color: #fff;
 }
 
+.scenario-tab-kicker {
+  color: rgb(255 255 255 / 72%);
+}
+
 .scenario-glow {
   position: absolute;
   inset: 20% -10%;
@@ -638,13 +647,21 @@ textarea:focus-visible,
 }
 
 .modal-panel {
+  display: flex;
+  flex-direction: column;
   width: min(100%, 46rem);
-  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 45%);
   border-radius: 1.5rem;
   background: #fff;
   box-shadow: 0 30px 90px rgb(3 24 35 / 36%);
+}
+
+.modal-scroll-region {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 .form-field label {
@@ -743,7 +760,7 @@ textarea:focus-visible,
   }
 
   .modal-panel {
-    max-height: 95vh;
+    max-height: 95dvh;
     border-radius: 1.5rem 1.5rem 0 0;
   }
 }
